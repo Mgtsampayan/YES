@@ -4,8 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services - My Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Same base styles as before */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --background-color: #f4f4f4;
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,20 +22,26 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
             line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
         }
 
+        /* Navbar Styles */
         .navbar {
-            background-color: #333;
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             padding: 1rem;
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            width: 100px;
-            margin-right: 2rem;
+            width: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--white);
         }
 
         .nav-links {
@@ -34,54 +49,136 @@
             gap: 1.5rem;
         }
 
-        .navbar a {
-            color: white;
+        .nav-links a {
+            color: var(--white);
             text-decoration: none;
-            padding: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
         }
 
-        .navbar a:hover {
-            background-color: #555;
-            border-radius: 4px;
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.2);
         }
 
+        /* Content Styles */
         .content {
             max-width: 1200px;
             margin: 2rem auto;
-            padding: 0 1rem;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .footer {
-            background-color: #333;
-            color: white;
+        h1 {
+            color: var(--primary-color);
             text-align: center;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
-        /* Services page specific styles */
+        .services-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            padding: 1rem;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Services Grid */
         .services-grid {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
         .service-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 1.5rem;
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
         }
 
         .service-card h3 {
-            color: #333;
-            margin-bottom: 1rem;
+            color: var(--primary-color);
+            margin: 1rem 0;
+            font-size: 1.5rem;
         }
 
         .service-card p {
             color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .learn-more-btn {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .learn-more-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .service-card {
+            animation: fadeIn 0.5s ease-out forwards;
         }
     </style>
 </head>
@@ -92,7 +189,7 @@
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html">About Us</a>
-            <a href="services.html">Our Services</a>
+            <a href="services.html">Services</a>
             <a href="contact.html">Contact</a>
         </div>
     </div>
@@ -100,24 +197,52 @@
     <!-- Main Content -->
     <div class="content">
         <h1>Our Services</h1>
-        <p>Discover the range of services we offer to help your business grow.</p>
+        
+        <div class="services-intro">
+            <p>Discover our comprehensive range of services designed to help your business grow and succeed in today's digital world.</p>
+        </div>
 
         <div class="services-grid">
             <div class="service-card">
+                <i class="fas fa-laptop-code service-icon"></i>
                 <h3>Web Design</h3>
-                <p>Custom website design tailored to your brand and business needs.</p>
+                <p>Custom website design tailored to your brand and business needs. We create responsive, modern, and user-friendly websites.</p>
+                <a href="#" class="learn-more-btn">Learn More</a>
             </div>
+
             <div class="service-card">
+                <i class="fas fa-bullhorn service-icon"></i>
                 <h3>Digital Marketing</h3>
-                <p>Comprehensive digital marketing strategies to boost your online presence.</p>
+                <p>Comprehensive digital marketing strategies to boost your online presence and reach your target audience.</p>
+                <a href="#" class="learn-more-btn">Learn More</a>
             </div>
+
             <div class="service-card">
+                <i class="fas fa-search service-icon"></i>
                 <h3>SEO Optimization</h3>
-                <p>Improve your search engine rankings and drive more organic traffic.</p>
+                <p>Improve your search engine rankings and drive more organic traffic to your website with our SEO services.</p>
+                <a href="#" class="learn-more-btn">Learn More</a>
             </div>
+
             <div class="service-card">
+                <i class="fas fa-pen-fancy service-icon"></i>
                 <h3>Content Creation</h3>
-                <p>High-quality content that engages your audience and drives conversions.</p>
+                <p>High-quality content that engages your audience and drives conversions, including articles, blogs, and social media.</p>
+                <a href="#" class="learn-more-btn">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-mobile-alt service-icon"></i>
+                <h3>Mobile Development</h3>
+                <p>Custom mobile application development for iOS and Android platforms to reach users on their preferred devices.</p>
+                <a href="#" class="learn-more-btn">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-chart-line service-icon"></i>
+                <h3>Analytics & Reporting</h3>
+                <p>Detailed analytics and reporting services to track your business growth and optimize performance.</p>
+                <a href="#" class="learn-more-btn">Learn More</a>
             </div>
         </div>
     </div>

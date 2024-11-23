@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - My Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Same base styles as index.html */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --background-color: #f4f4f4;
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,20 +21,25 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
             line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
         }
 
         .navbar {
-            background-color: #333;
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             padding: 1rem;
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            width: 100px;
-            margin-right: 2rem;
+            width: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--white);
         }
 
         .nav-links {
@@ -34,78 +47,147 @@
             gap: 1.5rem;
         }
 
-        .navbar a {
-            color: white;
+        .nav-links a {
+            color: var(--white);
             text-decoration: none;
-            padding: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.2);
         }
 
         .content {
             max-width: 1200px;
             margin: 2rem auto;
-            padding: 0 1rem;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .footer {
-            background-color: #333;
-            color: white;
+        h1 {
+            color: var(--primary-color);
             text-align: center;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
-        /* About page specific styles */
         .team-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
         .team-member {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 4px solid var(--primary-color);
+        }
+
+        .team-member h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            color: #666;
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--white);
             text-align: center;
             padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .team-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            padding: 1rem;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <div class="navbar">
         <img src="./assets/Logo.jpg" alt="Website Logo" class="logo">
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html">About Us</a>
-            <a href="services.html">Our Services</a>
+            <a href="services.html">Services</a>
             <a href="contact.html">Contact</a>
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="content">
         <h1>About Us</h1>
-        <p>Learn more about our company and the amazing team behind our success.</p>
         
+        <div class="about-intro">
+            <p>We are a passionate team dedicated to delivering exceptional solutions for our clients. 
+            With years of experience and expertise, we strive to exceed expectations in everything we do.</p>
+        </div>
+
         <div class="team-section">
             <div class="team-member">
+                <img src="./assets/team1.jpg" alt="John Doe">
                 <h3>John Doe</h3>
                 <p>CEO & Founder</p>
             </div>
             <div class="team-member">
+                <img src="./assets/team2.jpg" alt="Jane Smith">
                 <h3>Jane Smith</h3>
                 <p>Creative Director</p>
             </div>
             <div class="team-member">
+                <img src="./assets/team3.jpg" alt="Mike Johnson">
                 <h3>Mike Johnson</h3>
                 <p>Lead Developer</p>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
         <p>&copy; 2024 My Website. All rights reserved.</p>
     </div>
