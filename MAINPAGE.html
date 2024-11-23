@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MainPage</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(270deg, #1e3c72, #2a5298, #6dd5ed, #2193b0);
+            background-size: 800% 800%;
+            animation: gradientBG 10s ease infinite;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #2193b0;
+            font-family: 'Georgia', serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #2193b0;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 25px;
+            position: relative;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: #2193b0;
+            bottom: -5px;
+            left: 0;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            margin-top: 20px;
+            color: #6dd5ed;
+        }
+
+        p {
+            text-indent: 20px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .highlight {
+            background-color: #f7f9fc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 6px solid #6dd5ed;
+            font-style: italic;
+            color: #555;
+        }
+
+        ul,
+        ol {
+            padding-left: 40px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        li::marker {
+            color: #2193b0;
+        }
+
+        .love-section {
+            padding-left: 20px;
+            margin-bottom: 40px;
+            border-left: 6px solid #2193b0;
+        }
+
+        .hate-section {
+            padding-left: 20px;
+            margin-bottom: 40px;
+            border-left: 6px solid #6dd5ed;
+        }
+
+        a {
+            color: #2193b0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #6dd5ed;
+            text-decoration: underline;
+        }
+
+        /* Adding a button for any call to action */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #2193b0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #6dd5ed;
+            transform: translateY(-3px);
+        }
+
+        /* Added styles for images */
+        .section-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Added styles for video */
+        .video-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .section-video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Added styles for sound buttons */
+        .sound-btn {
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #2193b0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sound-btn:hover {
+            background-color: #6dd5ed;
+            transform: translateY(-2px);
+        }
+
+        .sound-btn i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Inate: Love and Hate</h1>
+
+        <!-- Added audio background music -->
+        <audio id="backgroundMusic" loop>
+            <source src="assets/iloveyou.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+        <div class="love-section">
+            <h2>Love: A Powerful Force</h2>
+            <!-- Added love image -->
+            <img src="assets/HappyImage.jpg" alt="Representation of Love" class="section-image">
+
+            <!-- Added love sound effect button -->
+            <button class="sound-btn" onclick="playSound('loveSound')">
+                <i class="fas fa-heart"></i> Play Love Sound
+            </button>
+            <audio id="loveSound">
+                <source src="assets/iloveyou.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+
+            <p>Love is an incredibly powerful emotion that has the ability to transform lives. It brings people together,
+                fostering connections that can last a lifetime. Love comes in many forms, from the affection between family
+                members to the passion shared by romantic partners. It can be a source of great joy and fulfillment,
+                providing comfort during difficult times. At its best, love inspires us to be better versions of ourselves,
+                encouraging growth and compassion. However, love can also be complex, sometimes leading to vulnerability and
+                heartache when not reciprocated or when relationships end.</p>
+
+            <h3>Key Points About Love:</h3>
+            <ul>
+                <li>Brings people together</li>
+                <li>Comes in various forms (familial, romantic, platonic)</li>
+                <li>Source of joy and comfort</li>
+                <li>Can inspire personal growth</li>
+                <li>May lead to vulnerability</li>
+            </ul>
+        </div>
+
+        <div class="hate-section">
+            <h2>Hate: A Destructive Emotion</h2>
+            <!-- Added hate image -->
+            <img src="assets/HatePicture.jpg" alt="Representation of Hate" class="section-image">
+
+            <!-- Added hate sound effect button -->
+            <button class="sound-btn" onclick="playSound('hateSound')">
+                <i class="fas fa-bolt"></i> Play Hate Sound
+            </button>
+            <audio id="hateSound">
+                <source src="assets/HateSounds.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+
+            <p>On the opposite end of the emotional spectrum lies hate, a destructive force that can consume individuals and
+                tear communities apart. Hate often stems from fear, misunderstanding, or past traumas. It can blind us to
+                the humanity in others, leading to discrimination and violence. The energy required to maintain hatred can
+                be exhausting, taking a toll on both mental and physical health. While it's natural to experience moments of
+                intense dislike, allowing hate to take root can have long-lasting negative consequences. Overcoming hate
+                requires empathy, understanding, and the willingness to forgive.</p>
+
+            <h3>Key Points About Hate:</h3>
+            <ol>
+                <li>Often stems from fear or misunderstanding</li>
+                <li>Can lead to discrimination and violence</li>
+                <li>Consumes energy and harms well-being</li>
+                <li>Overcoming hate requires empathy and forgiveness</li>
+            </ol>
+        </div>
+
+        <!-- Added video section -->
+        <div class="video-section">
+            <h2>Understanding Emotions</h2>
+            <video controls class="section-video">
+                <source src="assets/Emotion Understand.mp4" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        // Function to play sound effects
+        function playSound(soundId) {
+            var sound = document.getElementById(soundId);
+            sound.play();
+        }
+
+        // Play background music on page load
+        window.onload = function () {
+            var backgroundMusic = document.getElementById("backgroundMusic");
+            backgroundMusic.play();
+        };
+    </script>
+</body>
+
+</html>
